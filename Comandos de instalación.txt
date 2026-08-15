@@ -1,0 +1,31 @@
+Comandos de instalación
+
+PowerShell 1
+
+Cambiar donde dice Ip issabel por la IP
+
+scp "C:\Users\darca\Downloads\Actualizacion_Dashboard_Correo_Voz_v16.zip" root@Ip issabel:/root/
+-------------------------------------------------
+ssh root@Ip issabel
+-------------------------------------------------
+mkdir -p /opt/corporacion-litoral-v16
+
+unzip -o /root/Actualizacion_Dashboard_Correo_Voz_v16.zip \
+  -d /opt/corporacion-litoral-v16
+
+chmod +x /opt/corporacion-litoral-v16/scripts/install_v16.sh
+
+/opt/corporacion-litoral-v16/scripts/install_v16.sh
+-------------------------------------------------
+(cd /opt/corporacion-litoral/dashboard/backend && nohup /usr/local/bin/npm start >/tmp/dashboard-backend.log 2>&1 &) && (cd /opt/corporacion-litoral/dashboard/frontend && nohup /usr/local/bin/npm start >/tmp/dashboard-frontend.log 2>&1 &)
+-------------------------------------------------
+curl http://127.0.0.1:4000/api/health
+-------------------------------------------------
+
+
+PowerShell 2
+
+-------------------------------------------------
+ssh -N -L 3000:127.0.0.1:3000 -L 4000:127.0.0.1:4000 root@Ip issabel
+-------------------------------------------------
+
